@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+                android:id="@+id/nav_main"
+                android:icon="@drawable/ic_home_black_24dp"
+                android:title="@string/home" />
+        <item
+                android:id="@+id/nav_dairy"
+                android:icon="@drawable/ic_show_chart_black_24dp"
+                android:title="@string/progress" />
+        <item
+                android:id="@+id/nav_cup"
+                android:icon="@drawable/ic_local_drink_black_24dp"
+                android:title="@string/cup" />
+        <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings_black"
+                android:title="@string/settings" />
+        <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_share_black_24dp"
+                android:title="@string/share" />
+        <item
+                android:id="@+id/nav_rate"
+                android:icon="@drawable/ic_favorite_black_24dp"
+                android:title="@string/rate" />
+        <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_info_outline_black_24dp"
+                android:title="@string/about" />
+        <item
+                android:id="@+id/nav_sync"
+                android:icon="@drawable/ic_sync_black"
+                android:title="@string/sync" />
+    </group>
+</menu>
