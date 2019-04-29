@@ -9,27 +9,11 @@
         android:fitsSystemWindows="true"
         tools:openDrawer="start">
 
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <include
+        layout="@layout/app_bar_drawer"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
 
-        <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorPrimary"
-                android:elevation="4dp"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-        <fragment
-                android:id="@+id/titleFragment"
-                android:name="com.dionpapas.drink_more_water.fragments.MainFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-    </LinearLayout>
 
     <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
