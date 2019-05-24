@@ -7,7 +7,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.dionpapas.drink_more_water.fragments.CupFragment
+import com.dionpapas.drink_more_water.fragments.DairyFragment
 import com.dionpapas.drink_more_water.fragments.MainFragment
+import com.dionpapas.drink_more_water.fragments.SettingsFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_drawer.*
@@ -41,10 +43,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fragmentManager.beginTransaction().replace(R.id.fragment_container, MainFragment()).commit()
             }
             R.id.nav_dairy -> {
-                fragmentManager.beginTransaction().replace(R.id.fragment_container, MainFragment()).commit()
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, DairyFragment()).commit()
             }
             R.id.nav_settings -> {
-                fragmentManager.beginTransaction().replace(R.id.fragment_container, MainFragment()).commit()
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, SettingsFragment()).commit()
             }
             R.id.nav_cup -> {
                 fragmentManager.beginTransaction().replace(R.id.fragment_container, CupFragment()).commit()
