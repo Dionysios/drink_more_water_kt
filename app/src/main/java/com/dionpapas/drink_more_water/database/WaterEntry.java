@@ -15,7 +15,6 @@ public class WaterEntry {
     @ColumnInfo(name = "updated_at")
     private Date updatedAt;
 
-
     public WaterEntry(int id, int counter, Date updatedAt) {
         this.id = id;
         this.counter = counter;
@@ -40,16 +39,8 @@ public class WaterEntry {
         return counter;
     }
 
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
-
     public Date getUpdatedAt() {
         return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
 }

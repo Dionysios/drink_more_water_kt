@@ -22,6 +22,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 Log.d(LOG_TAG, "Creating new database instance");
                 sInstance = Room.databaseBuilder(context.getApplicationContext(),
                         AppDatabase.class, AppDatabase.DATABASE_NAME)
+                        // todo change to fallbacktoDestructiveMigration
                         // We will allow this ONLY TEMPORALLY to see that our DB is working
                         .build();
             }
