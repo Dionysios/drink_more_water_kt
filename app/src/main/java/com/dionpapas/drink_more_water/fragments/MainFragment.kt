@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -17,16 +18,13 @@ class MainFragment : androidx.fragment.app.Fragment() {
 
     private lateinit var mainFragmentViewModel: MainFragmentViewModel
     private lateinit var statusTextView: TextView
+    private lateinit var mImageView: ImageView
+    private var waterCounter: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view: View = inflater!!.inflate(R.layout.fragment_main, container, false)
-        mainFragmentViewModel = ViewModelProviders.of(this).get(MainFragmentViewModel::class.java)
 
-      //  statusTextView = view.findViewById(R.id.tv_water_count)
-        mainFragmentViewModel.getLatestCounter().observe(this, Observer<WaterEntry> {
-            //Toast.makeText(context, "Water entry not saved!", Toast.LENGTH_SHORT).show()
-        })
 
 //        statusTextView.setOnClickListener {
 //            Log.d("Incoming", "Selected1")
@@ -38,11 +36,24 @@ class MainFragment : androidx.fragment.app.Fragment() {
         // Get the text view widget reference from custom layout
         val tv = view.findViewById<TextView>(R.id.tv_water_count)
         // Set a click listener for text view object
-        tv.setOnClickListener{
+
+        mainFragmentViewModel = ViewModelProviders.of(this).get(MainFragmentViewModel::class.java)
+
+        //  statusTextView = view.findViewById(R.id.tv_water_count)
+        mainFragmentViewModel.getLatestCounter().observe(this, Observer<WaterEntry> {
+            //Toast.makeText(context, "Water entry not saved!", Toast.LENGTH_SHORT).show()
+            //waterCounter = it.counter
+        })
+        tv.text = waterCounter.toString()
+        mImageView = view.findViewById<ImageView>(R.id.ib_water_increment)
+
+        mImageView.setOnClickListener{
             // Change the text color
-            tv.text = "2"
+            //tv.text = "2"
             // Show click confirmation
             Toast.makeText(view.context,"TextView clicked.",Toast.LENGTH_SHORT).show()
+            waterCounter++
+            tv.text = waterCounter.toString()
         }
         // Return the fragment view/layout
     }
