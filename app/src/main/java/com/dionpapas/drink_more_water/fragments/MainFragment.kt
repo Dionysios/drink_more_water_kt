@@ -36,14 +36,14 @@ class MainFragment : androidx.fragment.app.Fragment() {
         // Get the text view widget reference from custom layout
         val tv = view.findViewById<TextView>(R.id.tv_water_count)
         // Set a click listener for text view object
-
-        mainFragmentViewModel = ViewModelProviders.of(this).get(MainFragmentViewModel::class.java)
+        mainFragmentViewModel = ViewModelProviders.of(requireActivity()).get(MainFragmentViewModel::class.java)
 
         //  statusTextView = view.findViewById(R.id.tv_water_count)
-        mainFragmentViewModel.getLatestCounter().observe(this, Observer<WaterEntry> {
+        mainFragmentViewModel.getLatestCounter().observe(requireActivity(), Observer<WaterEntry> {
             //Toast.makeText(context, "Water entry not saved!", Toast.LENGTH_SHORT).show()
             //waterCounter = it.counter
         })
+
         tv.text = waterCounter.toString()
         mImageView = view.findViewById<ImageView>(R.id.ib_water_increment)
 
