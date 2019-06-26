@@ -18,4 +18,8 @@ class MainFragmentViewModel (application: Application) : AndroidViewModel(applic
     fun getLatestCounter(): LiveData<WaterEntry> {
         return getLatestCounter
     }
+
+    fun update(waterEntry: WaterEntry){
+        repository.update(waterEntry)
+    }
 }

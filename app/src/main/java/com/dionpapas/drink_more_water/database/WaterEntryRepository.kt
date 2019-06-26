@@ -25,6 +25,10 @@ class WaterEntryRepository(application: Application) {
         val insertwaterEntryAsyncTask = InsertWaterEntryAsyncTask(waterEntryDao).execute(waterEntry)
     }
 
+    fun update(waterEntry: WaterEntry) {
+        val updatewaterEntryAsyncTask = UpdateWaterEntryAsyncTask(waterEntryDao).execute(waterEntry)
+    }
+
     fun getLatestCounter(): LiveData<WaterEntry> {
         return getLatestCounter
     }
@@ -36,6 +40,14 @@ class WaterEntryRepository(application: Application) {
 
             override fun doInBackground(vararg p0: WaterEntry?) {
                 waterEntryDao.insertWaterEntry(p0[0]!!)
+            }
+        }
+
+        private class UpdateWaterEntryAsyncTask(waterEntryDao: WaterEntryDAO) : AsyncTask<WaterEntry, Unit, Unit>() {
+            val waterEntryDao = waterEntryDao
+
+            override fun doInBackground(vararg p0: WaterEntry?) {
+                waterEntryDao.updateWaterEntry(p0[0]!!)
             }
         }
     }
