@@ -1,11 +1,10 @@
 package com.dionpapas.drink_more_water.fragments;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import android.os.Bundle;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +15,9 @@ import com.dionpapas.drink_more_water.adapters.DairyAdapter;
 import com.dionpapas.drink_more_water.database.AppDatabase;
 import com.dionpapas.drink_more_water.database.WaterEntry;
 import androidx.fragment.app.Fragment;
+import com.dionpapas.drink_more_water.viewmodels.DairyFragmentViewModel;
 
 import java.util.List;
-
-import static androidx.appcompat.widget.LinearLayoutCompat.VERTICAL;
 
 
 public class DairyFragment extends Fragment {
@@ -27,6 +25,8 @@ public class DairyFragment extends Fragment {
     private DairyAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private static AppDatabase mDb;
+    private  DairyFragmentViewModel dairyFragmentViewModel;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,19 +42,17 @@ public class DairyFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.recyclerViewWaterEntries);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         // Initialize the adapter and attach it to the RecyclerView
-        mAdapter = new DairyAdapter(getActivity());
+        mAdapter = new DairyAdapter();
         mRecyclerView.setAdapter(mAdapter);
-        DividerItemDecoration decoration = new DividerItemDecoration(getContext(), VERTICAL);
-        mRecyclerView.addItemDecoration(decoration);
-        getAllEntries();
-    }
+        //DividerItemDecoration decoration = new DividerItemDecoration(getContext(), VERTICAL);
+        //mRecyclerView.addItemDecoration(decoration);
+        //getAllEntries();
+        dairyFragmentViewModel = ViewModelProviders.of(this).get(DairyFragmentViewModel.class);
 
-    public void getAllEntries(){
-        final LiveData<List<WaterEntry>> counting = mDb.taskDao().getAllWaterEntries();
-        counting.observe(this, new Observer<List<WaterEntry>>() {
+        dairyFragmentViewModel.getAllWaterEntries().observe(this, new Observer<List<WaterEntry>>() {
             @Override
-            public void onChanged(@Nullable List<WaterEntry> waterEntries) {
-                mAdapter.setwaterEntries(waterEntries);
+            public void onChanged(List<WaterEntry> waterEntries) {
+                mAdapter.submitList(waterEntries);
             }
         });
     }

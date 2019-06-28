@@ -33,6 +33,10 @@ class WaterEntryRepository(application: Application) {
         return getLatestCounter
     }
 
+    fun getAllWaterEntries(): LiveData<List<WaterEntry>>{
+        return allwaterEntries
+    }
+
     companion object {
 
         private class InsertWaterEntryAsyncTask(waterEntryDao : WaterEntryDAO) : AsyncTask<WaterEntry, Unit, Unit>() {
