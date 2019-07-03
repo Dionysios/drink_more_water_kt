@@ -3,6 +3,7 @@ package com.dionpapas.drink_more_water.fragments;
 import androidx.lifecycle.Observer;
 import android.os.Bundle;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.annotation.Nullable;
@@ -48,13 +49,13 @@ public class DairyFragment extends Fragment {
         //mRecyclerView.addItemDecoration(decoration);
         //getAllEntries();
         dairyFragmentViewModel = ViewModelProviders.of(this).get(DairyFragmentViewModel.class);
-
         dairyFragmentViewModel.getAllWaterEntries().observe(this, new Observer<List<WaterEntry>>() {
             @Override
             public void onChanged(List<WaterEntry> waterEntries) {
                 mAdapter.submitList(waterEntries);
             }
         });
+
     }
 
     @Override

@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.dionpapas.drink_more_water.R
 import com.dionpapas.drink_more_water.database.WaterEntry
 import com.dionpapas.drink_more_water.viewmodels.MainFragmentViewModel
+import java.util.*
 
 class MainFragment : androidx.fragment.app.Fragment() {
 
@@ -41,19 +42,20 @@ class MainFragment : androidx.fragment.app.Fragment() {
         //  statusTextView = view.findViewById(R.id.tv_water_count)
         mainFragmentViewModel.getLatestCounter().observe(requireActivity(), Observer<WaterEntry> {
             //Toast.makeText(context, "Water entry not saved!", Toast.LENGTH_SHORT).show()
-            //waterCounter = it.counter
+            waterCounter = it.counter
         })
 
         tv.text = waterCounter.toString()
-        mImageView = view.findViewById<ImageView>(R.id.ib_water_increment)
+        mImageView = view.findViewById(R.id.ib_water_increment)
 
         mImageView.setOnClickListener{
-            // Change the text color
-            //tv.text = "2"
             // Show click confirmation
             Toast.makeText(view.context,"TextView clicked.",Toast.LENGTH_SHORT).show()
             waterCounter++
             tv.text = waterCounter.toString()
+            val date = Date()
+            val waterEntry = WaterEntry(waterCounter,date)
+            mainFragmentViewModel.insert(waterEntry)
         }
         // Return the fragment view/layout
     }

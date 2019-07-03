@@ -15,13 +15,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_drawer.*
 import android.content.SharedPreferences
 import android.util.Log
-import com.dionpapas.drink_more_water.utils.Utils.KEY_WATER_COUNT
 import androidx.preference.PreferenceManager
+import com.dionpapas.drink_more_water.utils.Utils.KEY_WATER_COUNT
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,CupFragment.OnImageCupClickListener,
     SharedPreferences.OnSharedPreferenceChangeListener {
     private lateinit var fragmentManager: androidx.fragment.app.FragmentManager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
