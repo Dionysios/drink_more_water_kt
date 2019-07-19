@@ -25,8 +25,6 @@ class MainFragment : androidx.fragment.app.Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view: View = inflater!!.inflate(R.layout.fragment_main, container, false)
-
-
 //        statusTextView.setOnClickListener {
 //            Log.d("Incoming", "Selected1")
 //        }

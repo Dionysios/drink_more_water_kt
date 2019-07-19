@@ -12,14 +12,18 @@ class MainFragmentViewModel (application: Application) : AndroidViewModel(applic
     private var getLatestCounter: LiveData<WaterEntry> = repository.getLatestCounter()
 
     fun insert(waterEntry: WaterEntry) {
-        repository.insert(waterEntry)
+        if (waterEntry.id != null){
+            repository.update(waterEntry)
+        } else {
+            repository.insert(waterEntry)
+        }
     }
 
     fun getLatestCounter(): LiveData<WaterEntry> {
         return getLatestCounter
     }
 
-    fun update(waterEntry: WaterEntry){
-        repository.update(waterEntry)
-    }
+//    fun update(waterEntry: WaterEntry){
+//        repository.update(waterEntry)
+//    }
 }
